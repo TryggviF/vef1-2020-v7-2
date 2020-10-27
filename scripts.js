@@ -8,7 +8,6 @@ const LETTERS = `AÁBDÐEÉFGHIÍJKLMNOÓPRSTUÚVXYÝÞÆÖ`;
  * Byrja forrit.
  */
 function start() {
-  alert('Halló!');
   let mode;
   let code = prompt("Hvort viltu kóða eða afkóða streng? skrifaðu ,,kóða'' eða ,,afkóða''");
   while(code.localeCompare("afkóða") != 0 && code.localeCompare("kóða") != 0){
@@ -20,12 +19,12 @@ function start() {
   }
   else mode = 1;
   let n = prompt("Hversu mikið á að hiðra streng? Gefðu upp heiltölu á bilinu [1,31].");
-  while(!Number.isInteger(n-1) || n < 0 || n > 31){  //Góðan dag ég hata type coercion
+  while(!Number.isInteger(parseInt(n,10)) || n < 0 || n > 31){  //Góðan dag ég hata type coercion
     let newN = prompt(n + " er ekki heiltala á bilinu [0,31]. Reyndu aftur.");
     n = newN;
   }
   let str = prompt("Gefðu upp strenginn sem þú vilt " + code + " með hliðrun " + n + ":");
-  const regEx = /[^AÁBDÐEÉFGHIÍJKLMNOÓPRSTUÚVXYÝÞÆÖ]/;
+  const regEx = /[^AÁBDÐEÉFGHIÍJKLMNOÓPRSTUÚVXYÝÞÆÖ]/g;
   str = str.toLocaleUpperCase();
   while(str.match(regEx) != null){
     let newStr = prompt("Þú gafst upp stafi sem ekki er hægt að " + code +  ": " + str.match(regEx).join(",") + ". Reyndu aftur.");
@@ -40,8 +39,13 @@ function start() {
 }
 
 // Hér er gott að commenta út til að vinna í encode/decode föllum fyrst og síðan „viðmóti“ forrits
-start();
-
+let run;
+alert('Halló!');
+do{
+  start();
+  run = prompt("Viltu halda áfram?").toLocaleUpperCase();
+}
+while(run.localeCompare("JÁ") == 0);
 /**
  * Kóðar streng með því að hliðra honum um n stök.
  *
