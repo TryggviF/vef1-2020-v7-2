@@ -10,9 +10,10 @@ const LETTERS = `AÁBDÐEÉFGHIÍJKLMNOÓPRSTUÚVXYÝÞÆÖ`;
 function start() {
   let mode;
   let code = prompt("Hvort viltu kóða eða afkóða streng? skrifaðu ,,kóða'' eða ,,afkóða''");
+  code = code.toLocaleLowerCase();
   while(code.localeCompare("afkóða") != 0 && code.localeCompare("kóða") != 0){
     let newCode = prompt("Veit ekki hvaða aðgerð " + code + " er. Reyndu aftur.");
-    code = newCode
+    code = newCode;
   }
   if(code.localeCompare("afkóða") == 0){
     mode = 0;
