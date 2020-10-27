@@ -19,7 +19,7 @@ function start() {
   }
   else mode = 1;
   let n = prompt("Hversu mikið á að hiðra streng? Gefðu upp heiltölu á bilinu [1,31].");
-  while(!Number.isInteger(parseInt(n,10)) || n < 0 || n > 31){  //Góðan dag ég hata type coercion
+  while(!Number.isInteger(parseInt(n,10)) || parseInt(n) < 0 || parseInt(n) > 31){  //Góðan dag ég hata type coercion
     let newN = prompt(n + " er ekki heiltala á bilinu [0,31]. Reyndu aftur.");
     n = newN;
   }
